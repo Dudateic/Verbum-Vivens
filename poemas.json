@@ -1,6 +1,21 @@
 {
   "poemas": [
     {
+      "titulo": "Eu Não Sei Quantas Vidas Tenho",
+      "autor": "Augusto dos Anjos",
+      "texto": "Eu não sei quantas vidas tenho,\nMas sei que tenho uma dor,\nUm pranto velho, sem esperança,\nQue mora em mim, sem amor."
+    },
+    {
+      "titulo": "Se Eu Morresse Amanhã",
+      "autor": "Cecília Meireles",
+      "texto": "Se eu morresse amanhã,\nDeixaria um sorriso no rosto,\nUma palavra de amor,\nE um silêncio disposto."
+    },
+    {
+      "titulo": "Tristeza",
+      "autor": "Manuel Bandeira",
+      "texto": "Tristeza é a dor de não poder amar,\nÉ o pranto que escorre no silêncio da noite.\nÉ a ausência do sorriso, a falta do sol,\nÉ a solidão que aperta o coração."
+    },
+    {
       "titulo": "Luz da Aurora",
       "autor": "Poesia Livre",
       "texto": "Quando a aurora se insinua tímida no céu,\no mundo desperta num sussurro de véu.\nO orvalho restaura cada pétala sensível,\no coração desperta para o momento incrível.\nCores suaves dançam nas nuvens operosas,\npromessas de vida em alvoradas formosas.\nO vento, cúmplice das manhãs calmas,\ntraz consigo o bálsamo para as almas.\nE enquanto o sol pinta a terra de ouro,\nrenasce a esperança em cada rosto e bordo.\nUm novo dia, páginas brancas à espera,\nde histórias a escrever, de alma inteira."
