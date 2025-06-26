@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verbum - Poemas e Poesias</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap');
+
+  :root{
+    --verde-musgo: #3e5a35;
+    --verde-claro: #e6ede7;
+    --sombra: rgba(0, 0, 0, 0.1);
+    --preto-suave: #2e2e2e;
+    --folha-verde2: #3e5a35;
+    --folha-verde3: #7db061;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #cfd9ce, #f5f9f6);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--preto-suave);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in-out;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  @keyframes fadeIn{
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse{
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes slideInUp{
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .container{
+    background: var(--verde-claro);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px var(--sombra);
+    max-width: 900px;
+    width: 95%;
+    text-align: center;
+    animation: slideInUp 0.8s ease-out;
+    position: relative;
+    z-index: 10;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--verde-musgo);
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .options,
+  .extras{
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  label{
+    font-weight: 600;
+    color: var(--verde-musgo);
+    font-size: 1.1rem;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  select,
+  button{
+    padding: 0.8rem 1.4rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid var(--verde-musgo);
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  button{
+    background-color: var(--verde-musgo);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1 1 140px;
+    min-width: 140px;
+  }
+
+  button:hover,
+  button:focus{
+    background-color: #2c4326;
+    transform: scale(1.08);
+    animation: pulse 0.5s;
+  }
+
+  #poemSelect{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  #title{
+    font-size: 2.2rem;
+    margin-top: 1.8rem;
+    font-family: 'Playfair Display', serif;
+    color: #1f2b1f;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  #author{
+    font-style: italic;
+    color: #5e7a5e;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1.3s ease-in-out;
+  }
+
+  #content{
+    margin-top: 1.2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 6px var(--sombra);
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    max-height: 350px;
+    overflow-y: auto;
+    animation: slideInUp 1s ease-in-out;
+  }
+
+  .leaf{
+    position: fixed;
+    width: 22px;
+    height: 22px;
+    background-image: radial-gradient(circle at 30% 30%, var(--folha-verde3), var(--folha-verde2));
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    will-change: transform;
+  }
+
+
+  .container::-webkit-scrollbar{
+    width: 8px;
+  }
+  .container::-webkit-scrollbar-thumb{
+    background-color: var(--verde-musgo);
+    border-radius: 4px;
+  }
+
+  input[type=radio]{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  @media (min-width: 1024px){
+    body {
+      padding: 2rem;
+    }
+    .container {
+      padding: 3rem 3rem;
+      max-width: 900px;
+      max-height: 90vh;
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    #title {
+      font-size: 2.8rem;
+    }
+    #author {
+      font-size: 1.4rem;
+    }
+    #content {
+      font-size: 1.3rem;
+      max-height: 450px;
+      padding: 3rem;
+    }
+  }
+
+  @media (max-width: 480px){
+    h1{
+      font-size: 2rem;
+    }
+    #title{
+      font-size: 1.6rem;
+    }
+    #author{
+      font-size: 1rem;
+    }
+    #content{
+      font-size: 1rem;
+      max-height: 250px;
+      padding: 1rem;
+    }
+    button{
+      flex: 1 1 100%;
+      min-width: unset;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>🌿 Verbum Vivens</h1>
+    <div class="options" role="radiogroup" aria-label="Fonte dos poemas">
+      <label><input type="radio" name="source" value="api" checked /> API (Inglês)</label>
+      <label><input type="radio" name="source" value="poemas" /> Poemas</label>
+      <label><input type="radio" name="source" value="poesias" /> Poesias</label>
+    </div>
+
+    <div class="options" role="radiogroup" aria-label="Modo de seleção do poema">
+      <label><input type="radio" name="modo" value="random" checked /> Aleatório</label>
+      <label><input type="radio" name="modo" value="specific" /> Específico</label>
+    </div>
+
+    <select id="poemSelect" style="display:none;" aria-label="Selecionar poema"></select>
+
+    <div class="extras">
+      <button onclick="carregarPoema()" aria-label="Carregar poema">🎲 Carregar</button>
+      <button onclick="copiarPoema()" aria-label="Copiar poema para área de transferência">📋 Copiar</button>
+      <button onclick="exportarTexto()" aria-label="Exportar poema como arquivo TXT">📄 Exportar TXT</button>
+    </div>
+
+    <h2 id="title" tabindex="0"></h2>
+    <h4 id="author" tabindex="0"></h4>
+    <div id="content" tabindex="0">Escolha uma opção e clique em "Carregar"</div>
+  </div>
+
+<script>
+  const seletorPoema = document.getElementById('poemSelect');
+  const tituloEl = document.getElementById('title');
+  const autorEl = document.getElementById('author');
+  const conteudoEl = document.getElementById('content');
+
+  let poemas = [], poesias = [], titulosApi = [];
+
+  async function buscarJSON(caminho){
+    const resposta = await fetch(caminho);
+    const dados = await resposta.json();
+    return dados.poemas || dados.poesias || [];
+  }
+
+  async function carregarDadosIniciais(){
+    poemas = await buscarJSON('poemas.json');
+    poesias = await buscarJSON('poesias.json');
+    const resposta = await fetch('https://poetrydb.org/title');
+    const dados = await resposta.json();
+    titulosApi = dados.titles.map(t => ({ titulo: t, autor: '' }));
+  }
+
+  document.querySelectorAll('input[name="modo"]').forEach(el => {
+    el.addEventListener('change', () => {
+      const modo = document.querySelector('input[name="modo"]:checked').value;
+      seletorPoema.style.display = modo === 'specific' ? 'block' : 'none';
+      atualizarSeletorPoema();
+    });
+  });
+
+  document.querySelectorAll('input[name="source"]').forEach(el => {
+    el.addEventListener('change', atualizarSeletorPoema);
+  });
+
+  async function atualizarSeletorPoema(){
+    const fonte = document.querySelector('input[name="source"]:checked').value;
+    const modo = document.querySelector('input[name="modo"]:checked').value;
+    if (modo !== 'specific') return;
+
+    let itens = [];
+    if (fonte === 'api') itens = titulosApi;
+    else if (fonte === 'poemas') itens = poemas;
+    else if (fonte === 'poesias') tens = poesias;
+    
+
+    itens = itens.sort((a,b) => a.titulo.localeCompare(b.titulo));
+
+    seletorPoema.innerHTML = '';
+    itens.forEach(item => {
+      const opcao = document.createElement('option');
+      opcao.value = item.titulo;
+      opcao.textContent = `${item.titulo}${item.autor ? ' - ' + item.autor : ''}`;
+      seletorPoema.appendChild(opcao);
+    });
+  }
+
+  async function carregarPoema(){
+    const fonte = document.querySelector('input[name="source"]:checked').value;
+    const modo = document.querySelector('input[name="modo"]:checked').value;
+    const tituloSelecionado = seletorPoema.value;
+
+    tituloEl.textContent = 'Carregando...';
+    autorEl.textContent = '';
+    conteudoEl.textContent = '';
+
+    try{
+      if (fonte === 'api'){
+        let url = 'https://poetrydb.org/random';
+        if (modo === 'specific')
+          url = `https://poetrydb.org/title/${encodeURIComponent(tituloSelecionado)}`;
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+        const poema = Array.isArray(dados) ? dados[0] : dados;
+        tituloEl.textContent = poema.title;
+        autorEl.textContent = `por ${poema.author}`;
+        conteudoEl.textContent = poema.lines.join('\n');
+      } 
+      else {
+        const lista = fonte === 'poemas' ? poemas : poesias;
+        const item = modo === 'random' 
+          ? lista[Math.floor(Math.random() * lista.length)] 
+          : lista.find(p => p.titulo === tituloSelecionado);
+        if (!item) throw new Error('Poema não encontrado.');
+        tituloEl.textContent = item.titulo;
+        autorEl.textContent = `por ${item.autor}`;
+        conteudoEl.textContent = item.texto;
+      }
+    }
+    catch(e){
+      tituloEl.textContent = '';
+      conteudoEl.textContent = 'Erro ao carregar poema/poesia.';
+      console.error(e);
+    }
+  }
+
+  function copiarPoema(){
+    const texto = `${tituloEl.textContent}\n${autorEl.textContent}\n\n${conteudoEl.textContent}`;
+    navigator.clipboard.writeText(texto).then(() => alert('Poema copiado!'));
+  }
+
+  function exportarTexto(){
+    const texto = `${tituloEl.textContent}\n${autorEl.textContent}\n\n${conteudoEl.textContent}`;
+    const blob = new Blob([texto], {type: 'text/plain'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${tituloEl.textContent || 'poema'}.txt`;
+    link.click();
+  }
+
+  class ParFolhas{
+    constructor(){
+      this.tamanho =  26 +Math.random() * 8;
+      this.posicaoy = -1440;
+      this.velocidadey = 0.6 + Math.random() * 0.6;
+
+      this.anguloesquerdo = Math.random() * 360;
+      this.angulodireito = Math.random() * 360;
+
+      this.velocidadeangularesquerdo = (Math.random() - 0.5) * 0.3;
+      this.velocidadeangulardireito = (Math.random() - 0.5) * 0.3;
+
+      this.amplitudeesquerdo = 8 + Math.random() * 5;
+      this.amplitudedireito = 8 + Math.random() * 5;
+
+      this.faseesquerda = Math.random() * 2 * Math.PI;
+      this.fasedireito = Math.random() * 2 * Math.PI;
+
+      this.folhaesquerda = document.createElement('div');
+      this.folhadireita = document.createElement('div');
+      this.folhaesquerda.className = 'leaf';
+      this.folhadireita.className = 'leaf';
+
+      this.folhaesquerda.style.width = this.tamanho + 'px';
+      this.folhaesquerda.style.height = this.tamanho + 'px';
+      this.folhadireita.style.width = this.tamanho + 'px';
+      this.folhadireita.style.height = this.tamanho + 'px';
+
+      this.folhaesquerda.style.opacity = 0.5 + Math.random() * 0.4;
+      this.folhadireita.style.opacity = 0.5 + Math.random() * 0.4;
+
+      document.body.appendChild(this.folhaesquerda);
+      document.body.appendChild(this.folhadireita);
+
+      this.baseXEsquerdo = Math.random() * window.innerWidth * -1;
+      this.baseXDireito = window.innerWidth * 0 + Math.random() * window.innerWidth * 1;
+    }
+
+    reiniciar(){
+      this.tamanho = 26 + Math.random() * 8;
+      this.posicaoy = -1440;
+      this.velocidadey = 0.6 + Math.random() * 0.6;
+
+      this.anguloesquerdo = Math.random() * 360;
+      this.angulodireito = Math.random() * 360;
+
+      this.velocidadeangularesquerdo = (Math.random() - 0.5) * 0.3;
+      this.velocidadeangulardireito = (Math.random() - 0.5) * 0.3;
+
+      this.amplitudeesquerdo = 8 + Math.random() * 5;
+      this.amplitudedireito = 8 + Math.random() * 5;
+
+      this.faseesquerda = Math.random() * 2 * Math.PI;
+      this.fasedireito = Math.random() * 2 * Math.PI;
+
+      this.folhaesquerda.style.width = this.tamanho + 'px';
+      this.folhaesquerda.style.height = this.tamanho + 'px';
+      this.folhadireita.style.width = this.tamanho + 'px';
+      this.folhadireita.style.height = this.tamanho + 'px';
+
+      this.folhaesquerda.style.opacity = 0.5 + Math.random() * 0.4;
+      this.folhadireita.style.opacity = 0.5 + Math.random() * 0.4;
+
+      this.baseXEsquerdo = Math.random() * window.innerWidth * -1;
+      this.baseXDireito = window.innerWidth * 0 + Math.random() * window.innerWidth * 1;
+    }
+
+    atualizar(){
+      this.posicaoy += this.velocidadey;
+      this.anguloesquerdo += this.velocidadeangularesquerdo;
+      this.angulodireito += this.velocidadeangulardireito;
+      this.faseesquerda += 0.03;
+      this.fasedireito += 0.03;
+
+      const xEsquerdo = this.baseXEsquerdo + Math.sin(this.faseesquerda) * this.amplitudeesquerdo;
+      const xDireito = this.baseXDireito + Math.sin(this.fasedireito) * this.amplitudedireito;
+
+      this.folhaesquerda.style.transform = `translate(${xEsquerdo}px, ${this.posicaoy}px) rotate(${this.anguloesquerdo}deg)`;
+      this.folhadireita.style.transform = `translate(${xDireito}px, ${this.posicaoy}px) rotate(${this.angulodireito}deg)`;
+
+      if(this.posicaoy > window.innerHeight) {
+        this.reiniciar();
+      }
+    }
+
+    remover(){
+      this.folhaesquerda.remove();
+      this.folhadireita.remove();
+    }
+  }
+
+  const paresFolhas = [];
+  const quantidadePares = 93; 
+
+  function animarParesFolhas(){
+    paresFolhas.forEach(par => par.atualizar());
+    requestAnimationFrame(animarParesFolhas);
+  }
+
+  function criarParesFolhas(){
+    paresFolhas.forEach(par => par.remover());
+    paresFolhas.length = 0;
+    for (let i = 0; i < quantidadePares; i++){
+      paresFolhas.push(new ParFolhas());
+      paresFolhas.push(new ParFolhas());
+    }
+  }
+
+  window.onload = () => {
+    carregarDadosIniciais();
+    criarParesFolhas();
+    animarParesFolhas();
+  };
+
+  window.addEventListener('resize', () => {
+    criarParesFolhas();
+  });
+</script>
+</body>
+</html>
